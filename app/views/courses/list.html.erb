@@ -6,7 +6,7 @@
     </div>
     <div class="col-sm-10">
       <div class="panel panel-primary">
-        <div class="panel-heading">
+       <div class="panel-heading">
           <h3 class="panel-title">选修课程</h3>
         </div>
         <div class="panel-body" style="min-height: 450px">
@@ -23,12 +23,12 @@
               <th>授课方式</th>
               <th>考试方式</th>
               <th>主讲教师</th>
-
             </tr>
             </thead>
             <tbody>
 
-            <% @course.each do |course| %>
+
+            <% @course_open.each do |course| %>
                 <tr>
 
                   <td><%= course.course_code %></td>

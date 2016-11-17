@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
 
   before_action :student_logged_in, only: [:select, :quit, :list]
-  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
+  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update,:open,:close]
   before_action :logged_in, only: :index
 
   #-------------------------for teachers----------------------
@@ -24,7 +24,19 @@ class CoursesController < ApplicationController
   def edit
     @course=Course.find_by_id(params[:id])
   end
-
+  
+  def open
+   @course = Course.find_by_id(params[:id])
+    @course.update_attributes(:open=>true)
+    redirect_to courses_path,flash: {:success =>"已经成功开启该课程：#{@course.name}"}
+  end
+  
+  def close 
+    @course = Course.find_by_id(params[:id])
+    @course.update_attributes(:open=>false)
+    redirect_to courses_path,flash: {:success =>"已经成功关闭该课程：#{@course.name}"}
+  end
+  
   def update
     @course = Course.find_by_id(params[:id])
     if @course.update_attributes(course_params)
@@ -48,6 +60,14 @@ class CoursesController < ApplicationController
   def list
     @course=Course.all
     @course=@course-current_user.courses
+    @course_open = Array.new
+    @course.each do |copen|
+      if copen.open then
+        @course_open.push copen
+      end
+    end
+   
+    
   end
 
   def select
@@ -70,7 +90,16 @@ class CoursesController < ApplicationController
   def index
     @course=current_user.teaching_courses if teacher_logged_in?
     @course=current_user.courses if student_logged_in?
+    
+    @course_all=Course.all-@course
+    @course_open = Array.new
+    @course_all.each do |copen|
+     if copen.open then
+        @course_open.push copen
+     end
+   end
   end
+
 
 
   private

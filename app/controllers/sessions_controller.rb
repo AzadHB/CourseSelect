@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
     redirect_to root_url, :flash => flash
   end
 
-  def new
-  end
+  #def new
+ # end
 
   def destroy
     log_out if logged_in?
