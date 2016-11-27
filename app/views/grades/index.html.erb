@@ -21,6 +21,7 @@
               <tr>
                 <th>课程编号</th>
                 <th>课程名称</th>
+                <th>邮箱</th>
                 <th>课时/学分</th>
                 <th>课程属性</th>
                 <th>授课方式</th>
@@ -51,6 +52,7 @@
                   <% if student_logged_in? %>
                     <td><%= grade.course.course_code %></td>
                     <td><%= grade.course.name %></td>
+                    <td><%= grade.course.teacher.email %></td>
                     <td><%= grade.course.credit %></td>
                     <td><%= grade.course.teaching_type %></td>
                     <td><%= grade.course.course_type %></td>
