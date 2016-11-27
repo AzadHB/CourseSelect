@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'homes#index'
+  get 'courses/index'
 
   resources :courses do
     member do
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
     collection do
       get :list
     end
+  
   end
 
   resources :grades, only: [:index, :update]

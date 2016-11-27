@@ -51,7 +51,6 @@
                   <% if student_logged_in? %>
                     <td><%= grade.course.course_code %></td>
                     <td><%= grade.course.name %></td>
-                    <td><%= grade.user.email %></td>
                     <td><%= grade.course.credit %></td>
                     <td><%= grade.course.teaching_type %></td>
                     <td><%= grade.course.course_type %></td>
@@ -63,6 +62,7 @@
                   <% if teacher_logged_in? %>
                     <td><%= grade.user.num %></td>
                     <td><%= grade.user.name %></td>
+                    <td><%= grade.user.email %></td>
                     <td><%= grade.user.major %></td>
                     <td><%= grade.user.department %></td>
                     <td><%= grade.course.name %></td>
