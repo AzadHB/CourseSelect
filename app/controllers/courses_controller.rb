@@ -63,9 +63,9 @@ class CoursesController < ApplicationController
     @course=Course.all
     @course=@course-current_user.courses
     @course_true = Array.new
-    @course.each do |t|
-      if t.open then
-        @course_true.push t
+    @course.each do |sigle|
+      if sigle.open then
+        @course_true.push sigle
       end
     end
   end
