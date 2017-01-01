@@ -27,6 +27,9 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find_by_id(params[:id])
+    @course.update_attributes(:course_aim => params[:course][:course_aim],
+                              :course_teacher => params[:course][:course_teacher],
+                              :course_content => params[:course][:course_content])
     if @course.update_attributes(course_params)
       flash={:info => "更新成功"}
     else
@@ -55,9 +58,8 @@ class CoursesController < ApplicationController
     redirect_to courses_path, flash: {:success => "已经成功关闭该课程:#{ @course.name}"}
   end
   
-  def courseplan
-      @course=Course.find_by_id(params[:id])
-  end
+  
+  
 
   #-------------------------for students----------------------
 
@@ -189,7 +191,24 @@ class CoursesController < ApplicationController
     end
     redirect_to courses_path, flash: flash
  end
-
+  
+  def courseaim
+      @course=Course.find_by_id(params[:id])
+  end
+  def coursecontent
+      @course=Course.find_by_id(params[:id])
+  end
+  def courseteacher
+      @course=Course.find_by_id(params[:id])
+  end
+  def courseplan
+      @course=Course.find_by_id(params[:id])
+  end
+  def courseshow
+      @course=Course.find_by_id(params[:id])
+      @coursetmp=current_user.teaching_courses if teacher_logged_in?
+  end
+  
   #-------------------------for both teachers and students----------------------
 
   def index

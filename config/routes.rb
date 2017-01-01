@@ -30,13 +30,18 @@ Rails.application.routes.draw do
       get :quit
       get :open
       get :close
+      get :courseaim
+      get :coursecontent
+      get :courseteacher
       get :courseplan
       get :modifydegree
+      
     end
     collection do
       get :list
       get :credittips
       get :filter
+      
       
     end
   end

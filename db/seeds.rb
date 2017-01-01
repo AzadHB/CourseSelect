@@ -149,6 +149,9 @@ teacher_map.keys.each do |index|
       class_room: course_map[index][:class_room],
       teaching_type: course_map[index][:teaching_type],
       exam_type: course_map[index][:exam_type],
+     # courseaim: course_map[index][:courseaim],
+      #coursecontent: course_map[index][:coursecontent],
+      #courseteacher: course_map[index][:courseteacher],
   )
 
 end
