@@ -40674,3 +40674,45 @@ Processing by CoursesController#new as HTML
   Rendered layouts/_content.html.erb (0.1ms)
   Rendered layouts/_footer.html.erb (0.0ms)
 Completed 200 OK in 103ms (Views: 100.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 114.242.250.55 at 2017-01-01 04:46:15 +0000
+Cannot render console from 114.242.250.55! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomesController#index as HTML
+  Rendered homes/index.html.erb within layouts/application (8866.9ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered layouts/_header.html.erb (37.2ms)
+  Rendered layouts/_content.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 9040ms (Views: 9022.1ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/courses" for 114.242.250.55 at 2017-01-01 04:46:28 +0000
+Cannot render console from 114.242.250.55! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CoursesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCourse Load (0.6ms)[0m  SELECT "courses".* FROM "courses"
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."teacher_id" = $1[0m  [["teacher_id", 3]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "grades" ON "users"."id" = "grades"."user_id" WHERE "grades"."course_id" = $1  [["course_id", 2]]
+  Rendered shared/_sidenav.html.erb (30.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered courses/index.html.erb within layouts/application (40.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 146ms (Views: 90.0ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/courses/2/courseplan" for 114.242.250.55 at 2017-01-01 04:46:29 +0000
+Cannot render console from 114.242.250.55! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CoursesController#courseplan as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mCourse Load (0.3ms)[0m  SELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered courses/courseplan.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_content.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 52ms (Views: 48.1ms | ActiveRecord: 0.6ms)
