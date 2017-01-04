@@ -76,8 +76,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-=begin
+ 
   #生产环境中邮件功能代码 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -92,7 +91,7 @@ Rails.application.configure do
     :password => "livkey123",
     :domain => 'heroku.com',
     :enable_starttls_auto => true   
-  }
-=end 
+  } 
+ 
 
 end
