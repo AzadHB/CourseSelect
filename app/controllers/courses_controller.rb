@@ -333,16 +333,18 @@ class CoursesController < ApplicationController
     
     @grades.each do |grade|
       if grade.grade.nil? == false
-        #旁听课
-        if grade.degree == 3 
-          @obtained_PT_all = @obtained_PT_all + grade.course.credit[-3..-1].to_f
-        else
-          @obtained_credit_all += grade.course.credit[-3..-1].to_f
-          if grade.course.course_type == "公共选修课"
-            @obtained_credit_public += grade.course.credit[-3..-1].to_f
-          end
-          if grade.degree == 1
-             @obtained_credit_major += grade.course.credit[-3..-1].to_f
+        if grade.grade >= 60
+          #旁听课
+          if grade.degree == 3 
+            @obtained_PT_all = @obtained_PT_all + grade.course.credit[-3..-1].to_f
+          else
+            @obtained_credit_all += grade.course.credit[-3..-1].to_f
+            if grade.course.course_type == "公共选修课"
+              @obtained_credit_public += grade.course.credit[-3..-1].to_f
+            end
+            if grade.degree == 1
+              @obtained_credit_major += grade.course.credit[-3..-1].to_f
+            end
           end
         end
       end
